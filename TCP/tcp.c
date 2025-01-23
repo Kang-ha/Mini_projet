@@ -10,7 +10,7 @@
 
 /* Créer une socket */
 int creer_socket(char* adresseIP, int port) {
-	int socket(int AF_INET, SOCK_STREAM,0);
+	int socket(AF_INET, SOCK_STREAM, 0);
 	if (socket == -1) {
 		printf("Echec de création socket\n");
 		traiter_erreur(__FUNCTION__);
