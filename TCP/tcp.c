@@ -10,7 +10,7 @@
 
 /* Créer une socket */
 int sock;
-sock = creer_socket(AF_INET,SOCK_DGRAM,0) {
+sock = int creer_socket(char* adresseIP, int port,0) {
 	if (sock == -1) {
 		printf("Echec de création socket\n");
 		traiter_erreur(__FUNCTION__);
