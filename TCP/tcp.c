@@ -9,12 +9,11 @@
 #include <arpa/inet.h>
 
 /* Créer une socket */
-int sock;
-sock = int creer_socket(char* adresseIP, int port,0) {
-	if (sock == -1) {
+int creer_socket(char* adresseIP, int port,0) {
+	if (creer_socket == -1) {
 		printf("Echec de création socket\n");
 		traiter_erreur(__FUNCTION__);
-	} return sock;
+	} return creer_socket;
 }
 
 /* Connecter une socket */
