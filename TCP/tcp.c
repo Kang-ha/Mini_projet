@@ -10,11 +10,11 @@
 
 /* Créer une socket */
 int creer_socket(char* adresseIP, int port) {
-	int socket(AF_INET, SOCK_STREAM, 0);
-	if (socket == -1) {
+	int sock = socket(AF_INET, SOCK_STREAM, 0);
+	if (sock == -1) {
 		printf("Echec de création socket\n");
 		traiter_erreur(__FUNCTION__);
-	} return socket;
+	}
 }
 
 /* Connecter une socket */
