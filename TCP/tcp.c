@@ -14,7 +14,7 @@ int creer_socket(char* adresseIP, int port) {
 	if (sock == -1) {
 		printf("Echec de création socket\n");
 		traiter_erreur(__FUNCTION__);
-	}
+	} return sock;
 }
 
 /* Connecter une socket */
@@ -42,10 +42,11 @@ void init_addr_client() {
 
 /* Attendre une connexion */
 int attendre_connexion() {
-	/*A COMPLETER*/
-	traiter_erreur(__FUNCTION__);
-
-	return socktraitement;
+	int socktraitement = accept(serv_socket, (struct sockaddr *)&client_addr, &client_addr_len);
+	if (socktraitement < 0) {
+		printf("Echec de connexion.\n");
+		traiter_erreur(__FUNCTION__);
+	} return socktraitement;
 }
 
 /* Recevoir un message */
