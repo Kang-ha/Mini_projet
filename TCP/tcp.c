@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-/* Créer une socket */
+/* Créer une socket */ 
 int creer_socket(char *adresseIP, int port) {
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock == -1) {
