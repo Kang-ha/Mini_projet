@@ -36,17 +36,17 @@ void dimensionner_file_attente_socket(int taille) {
 }
 
 /*Initialiser la structure adresse client */
-void init_addr_client() {
-	/*A COMPLETER*/
+void init_addr_client(struct sockaddr_in *addresse_client, int port) {
+	memset(addresse_client, 0, sizeof(struct sockaddr_in));
+	addresse_client -> sin_family = AF_INET;
+	addresse_client -> sin_addr.s_addr = INADDR_ANY;
+	addresse_client -> sin_port = htons(port);
 }
 
 /* Attendre une connexion */
-int attendre_connexion() {
-	int socktraitement = accept(serv_socket, (struct sockaddr *)&client_addr, &client_addr_len);
-	if (socktraitement < 0) {
-		printf("Echec de connexion.\n");
-		traiter_erreur(__FUNCTION__);
-	} return socktraitement;
+int attendre_connexion(int socket_serv) {
+	struct sockaddr_in addresse_client;
+	socklen_t taille_addresse = sizeof(addresse_client);
 }
 
 /* Recevoir un message */
