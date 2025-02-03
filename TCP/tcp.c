@@ -18,8 +18,13 @@ int creer_socket(char *adresseIP, int port) {
 }
 
 /* Connecter une socket */
-void connecter_socket(int socket_client, struct sockaddr_in *addresse_serveur) {
-	if (connect(socket_client, (struct sockaddr *)addresse_serveur, sizeof(*addresse_serveur)) < 0) {
+void connecter_socket(int socket_client) {
+	struct sockaddr_in adresse_serveur;
+	memset(&adresse_serveur, 0, sizeof(adresse_serveur));
+	adresse_serveur.sin_family = AF_INET;
+	adresse_serveur.sin_port = htons(8080);
+
+	if (connect(socket_client, (struct sockaddr *)&adresse_serveur, sizeof(adresse_serveur)) < 0) {
 		perror("Erreur lors de la connexion au serveur.");
 		traiter_erreur(__FUNCTION__);
 	}
