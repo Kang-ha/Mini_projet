@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 
 /* Créer une socket */
-int creer_socket(char* adresseIP, int port) {
+int creer_socket(char *adresseIP, int port) {
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock == -1) {
 		printf("Echec de création socket\n");
@@ -47,6 +47,12 @@ void init_addr_client(struct sockaddr_in *addresse_client, int port) {
 int attendre_connexion(int socket_serv) {
 	struct sockaddr_in addresse_client;
 	socklen_t taille_addresse = sizeof(addresse_client);
+
+	int socket_client = accept(socket_serv, (struct sockaddr *)&addresse_client, &taille_addresse);
+	if (socket_client < 0) {
+		perror("Erreur lors de l'acceptation de la connexion.");
+		return -1;
+	}
 }
 
 /* Recevoir un message */
