@@ -18,9 +18,11 @@ int creer_socket(char *adresseIP, int port) {
 }
 
 /* Connecter une socket */
-void connecter_socket(int sock) {
-	/*A COMPLETER*/
-	traiter_erreur(__FUNCTION__);
+void connecter_socket(int socket_client, struct sockaddr_in *addresse_serveur) {
+	if (connect(socket_client, (struct sockaddr *)addresse_serveur, sizeof(*addresse_serveur)) < 0) {
+		perror("Erreur lors de la connexion au serveur.");
+		traiter_erreur(__FUNCTION__);
+	}
 }
 
 /* Attacher une socket */
