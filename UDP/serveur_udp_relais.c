@@ -9,7 +9,7 @@
 
 int main(int argc, char** argv) {
 	traiter_commande(argc==1, argv[0], "<port>\nmauvais nombre d'arguments");
-	traiter_commande(est_un_port_non_reserve(argc==1), argv[0], "<port>\n<port> est un port non réservé");
+	traiter_commande(est_un_port_non_reserve(argv[0]), argv[0], "<port>\n<port> est un port non réservé");
 	
 	/*A COMPLETER*/
 
